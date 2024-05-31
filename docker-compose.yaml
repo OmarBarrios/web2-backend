@@ -1,0 +1,22 @@
+version: '3.7'
+
+networks:
+  web2:
+    name: web2-app
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    container_name: mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER : guest
+      MYSQL_PASSWORD: guest
+      MYSQL_DATABASE: web2
+      MYSQL_ROOT_PASSWORD: guest
+    networks:
+      - web2
+    volumes:
+      - ./mysql:/var/lib/mysql
